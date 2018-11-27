@@ -14,18 +14,8 @@ class ChuckNorrisController extends AbstractController
      */
     public function random(Client $client): Response
     {
-        $response = $client->get('/jokes/random');
-        $json = json_decode($response->getBody(), true);
+        $data = json_decode($client->get('/jokes/random')->getBody(), true);
 
-        $escapedJoke = htmlentities($json['value']);
-
-        return new Response(<<<HTML
-<!DOCTYPE html>
-<html>
-    <head><title>Une blague de Chuck !</title></head>
-    <body>{$escapedJoke}</body>
-</html>
-HTML
-        );
+        return $this->render('chuck/random.html.twig', ['data' => $data]);
     }
 }
