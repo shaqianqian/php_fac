@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/flash")
+     * @Route("/default")
      */
     public function setFlashAction(): Response
     {
